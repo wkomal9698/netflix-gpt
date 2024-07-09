@@ -3,8 +3,19 @@
 - Create React App
 - Configured tailwindCSS 
 - Header
+- Routing of App
 - Login form
 - Sign up form
+- Form validation
+- useRef 
+- Firebase Setup
+- Deploying our app to Production (App URL: https://netflixgpt-komal.web.app/)
+- Create Sign User Account
+- Implement Sign In user API
+- Created Redux Store with userSlice
+- Implemented Sign Out
+- Update Profile
+- Fetch from TMDB movies
 
 # Features
 
