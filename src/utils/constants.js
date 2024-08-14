@@ -5,3 +5,16 @@ export const BACKGROUND_IMAGE= "https://assets.nflxext.com/ffe/siteui/vlv3/05527
 export const USER_AVATAR = "https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e";
 
 export const KWI2_USER_PROFILE = "https://lh3.googleusercontent.com/a/ACg8ocJM1x28qx-zyv0HnGCfSbQtp1IgGPYcxj5-BN0SKrioS3pdaXE=s192-c-rg-br100"
+
+export const API_OPTIONS = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODVjNzA0MjY4ZDMyZDQxNzBlMTI1NjcyZGQ2NTg5NyIsIm5iZiI6MTcyMjI5MjcwMC41MzM5Miwic3ViIjoiNjZhNzk3MDU1YTNlOTU4MjVkMWUwZTg1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.5xq6e8XKnVyZ-np-tXeUyfps7KTI_62kx9uC5qAKNA0'
+    }
+  };
+
+export const NOW_PLAYING_API_URL = "https://api.themoviedb.org/3/movie/now_playing?page=1"
+
+export const MOVIE_VIDEOS_API_URL_1 = "https://api.themoviedb.org/3/movie/"
+export const MOVIE_VIDEOS_API_URL_2 = "/videos?language=en-US"

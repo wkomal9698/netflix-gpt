@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
-import { BACKGROUND_IMAGE, KWI2_USER_PROFILE, USER_AVATAR } from "../utils/constants";
+import { BACKGROUND_IMAGE, USER_AVATAR } from "../utils/constants";
 import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
@@ -8,12 +8,10 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const fullName = useRef(null);
@@ -42,8 +40,6 @@ const Login = () => {
 
     if (isSignInForm) {
       // login user and redirect to browse page
-      console.log("Sign In Auth");
-      console.log("Auth", auth);
       signInWithEmailAndPassword(
         auth,
         email.current.value,
@@ -51,19 +47,14 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log("Success: ", user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMsg = error.message;
-          console.log("Error: ", errorCode, errorMsg);
           setErrorMessage(errorCode + " - " + errorMsg);
         });
     } else {
       // create account and redirect to browse page
-      console.log("Sign In Auth");
-      console.log("Auth", auth);
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
@@ -72,15 +63,13 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log("Success: ", user);
           updateProfile(user, {
-            displayName: fullName.current.value, photoURL: KWI2_USER_PROFILE
+            displayName: fullName.current.value, photoURL: USER_AVATAR
           })
             .then(() => {
               // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -91,7 +80,6 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMsg = error.message;
-          console.log("Error: ", errorCode, errorMsg);
           setErrorMessage(errorCode + " - " + errorMsg);
         });
     }
